@@ -4,7 +4,7 @@ le train démarre (juste le background qui défile plus ou moins vite)
 possibilité d'envoyer un péon construire/reparer
 [phase 2 vague d'ennemis]
 des bandits tombent du ciel
-ils marchent jusqu'à l'arrière du train pour casser la chaudière
+ils marchent jusqu'à l'avant du train pour casser la chaudière
 la tour les attaque
 possibilité d'utiliser son perso pour leur mettre des coups de shotgun
 repeat en random cette phase
