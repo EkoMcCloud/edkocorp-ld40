@@ -22,3 +22,11 @@ faut finir les ennemis déjà sur le train avant de pouvoir arriver à la station
 [phase 4]
 posay à la station, on peut réparer tranquille, engager de l'équipage, et repartir
 [retour phase 1]
+
+
+appeler le train Jess
+ajouter le hud avec ressources
+pv
+bismuth
+metal (pour les upgrades)
+thune (pour les recruits)
