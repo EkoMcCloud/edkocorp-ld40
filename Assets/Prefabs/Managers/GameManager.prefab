@@ -54,7 +54,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trainSpeed: 88
   trainCoreMaxHp: 1000
-  score: 0
+  coins: 0
+  bismuth: 0
+  scraps: 0
+  spawners:
+  - {fileID: 1072293613231208, guid: eb1afdce8cf78b04cbb400aa7fa09890, type: 2}
 --- !u!114 &114262303909005634
 MonoBehaviour:
   m_ObjectHideFlags: 1

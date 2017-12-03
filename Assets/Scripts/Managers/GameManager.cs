@@ -12,10 +12,17 @@ namespace EdkoCorpLD40.Managers
 
         // TODO changer la gestion du loading pour etre sur tout s'initialise bien (tester boardHolder ou autre avant chargement niveau)
 
-        public void OnLevelClear() {
+        public void OnLevelClear() 
+        {
             // TODO : Do something
             // SceneManager.LoadScene(0);
-            Debug.Log("YOU WINZ");
+            Debug.Log("YOU WINZ : NEXT LEVEL");
+            levelManager.NextLevel();
+        }
+
+        public void OnGameOver()
+        {
+            Debug.Log("YOU LOOZE");
         }
 
         // Use this for initialization

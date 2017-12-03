@@ -1,4 +1,5 @@
 using UnityEngine;
+using EdkoCorpLD40.Managers;
 using EdkoCorpLD40.Weaponry;
 
 namespace EdkoCorpLD40.Characters
@@ -7,12 +8,12 @@ namespace EdkoCorpLD40.Characters
     {
         
 
-        protected override void Start()
+        override protected void Start()
         {
             base.Start();
         }
 
-        protected override void FixedUpdate() 
+        override protected void FixedUpdate() 
         {
             base.FixedUpdate();
 
@@ -52,6 +53,11 @@ namespace EdkoCorpLD40.Characters
                     }
                 }
             }
+        }
+
+        override protected void OnDead()
+        {
+            GameManager.instance.OnGameOver();
         }
     }
 }

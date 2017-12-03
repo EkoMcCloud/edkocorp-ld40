@@ -1,4 +1,5 @@
 using UnityEngine;
+using EdkoCorpLD40.Managers;
 using EdkoCorpLD40.Weaponry;
 
 namespace EdkoCorpLD40.Characters
@@ -70,7 +71,6 @@ namespace EdkoCorpLD40.Characters
         {
             // TODO utiliser getter pour recup temps d'anim
             float time = (damageCooldown != 0.0f) ? damageCooldown : 0.1f;
-
             Invoke("ProcessDie", time);
             // prevent + StartCoroutine("FadeOut") then Destroy;
         }
@@ -78,6 +78,11 @@ namespace EdkoCorpLD40.Characters
         protected void ProcessDie()
         {
             base.OnDie();
+        }
+
+        override protected void OnDead()
+        {
+            GameManager.instance.levelManager.coins++;
         }
 
         /*protected IEnumerator FadeOut()
@@ -100,7 +105,7 @@ namespace EdkoCorpLD40.Characters
             yield return true;
         }*/
 
-        protected void OnTriggerEnter2D(Collider2D collision)
+        protected void OnTriggerStay2D(Collider2D collision)
         {
             // Debug.Log("COLISION : " + collision.tag);
             if (collision.tag == "Player") { // TODO ADD DAMAGE ON TRIGGER STAY sinon immune
@@ -109,6 +114,11 @@ namespace EdkoCorpLD40.Characters
                 if (player != null) {
                     player.Damage(damage);
                 }
+            }
+
+            // TODO use gameObject instead of singleton
+            if (collision.tag == "Core") {
+                GameManager.instance.levelManager.Damage(damage);
             }
         }
     }

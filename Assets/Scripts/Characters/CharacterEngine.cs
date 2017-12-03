@@ -1,4 +1,5 @@
 using UnityEngine;
+using EdkoCorpLD40.Managers;
 using EdkoCorpLD40.Weaponry;
 
 namespace EdkoCorpLD40.Characters
@@ -19,9 +20,10 @@ namespace EdkoCorpLD40.Characters
 
         protected GameObject currentWeapon;
 
+        public int currentHp { get; private set; }
+
         protected Vector2 lastPos;
         protected bool grounded = true;
-        protected int currentHp;
         protected int currentFuel;
         protected bool vulnerable = true;
         protected Color bloodColor = new Color(1.0f, 0.0f, 0.0f, 0.3f);
@@ -45,6 +47,11 @@ namespace EdkoCorpLD40.Characters
             }
 
             return damaged;
+        }
+
+        public virtual bool InstaKill()
+        {
+            return this.Damage(this.currentHp);
         }
 
         public bool Heal(int heal)
@@ -118,6 +125,12 @@ namespace EdkoCorpLD40.Characters
             if (currentWeapon == null && weapon != null) {
                 Equip(weapon);
             }
+
+            // THE FLOOR IS MAGGOTZ : TODO externaliser & dynamiser
+            // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
+            if(this.transform.position.y < -10) {
+                InstaKill();
+            }
             // Debug.Log("Velocity " + this.rb2D.velocity);
             // Debug.Log("Grounded " + grounded);
         }
@@ -131,12 +144,22 @@ namespace EdkoCorpLD40.Characters
 
         protected virtual void OnDie()
         {
-            if (currentWeapon != null) {
-                currentWeapon.SetActive(false);
-                Destroy(currentWeapon.gameObject);
+            // TODO find better way to trigger death only once :)
+            if (gameObject.activeSelf) {
+                if (currentWeapon != null) {
+                    currentWeapon.SetActive(false);
+                    Destroy(currentWeapon.gameObject);
+                }
+                gameObject.SetActive(false);
+                Destroy(this.gameObject);
+                
+                OnDead();
             }
-            gameObject.SetActive(false);
-            Destroy(this.gameObject);
+        }
+
+        protected virtual void OnDead()
+        {
+            // TODO stuff
         }
 
         protected virtual void LookAt(float xPos, float yPos)

@@ -19,7 +19,7 @@ namespace EdkoCorpLD40.Level
         protected void Awake () 
         {
             Debug.Log("Awake");
-            Debug.Log(layersTiles.Count);
+            //Debug.Log(layersTiles.Count);
             tiles = new List<List<GameObject>>();
             for (int i = 0;  i < layersTiles.Count; i++)  {
                 GameObject toInstanciate = layersTiles[i];

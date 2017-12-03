@@ -7,7 +7,7 @@ namespace EdkoCorpLD40.Spawners
 {
     public class EnemySpawner : MonoBehaviour
     {
-         public GameObject[] enemies;
+        public GameObject[] enemies;
         public GameObject[] bosses;
 
         public float minDelay = 5f;
@@ -22,7 +22,7 @@ namespace EdkoCorpLD40.Spawners
         // Use this for initialization
         protected void Start ()
         {
-            animator = GetComponent<Animator>();
+            //animator = GetComponent<Animator>();
             nbMobs = nbSpawn;
             mobs = new List<GameObject>();
             InvokeNextSpawn();
@@ -63,14 +63,17 @@ namespace EdkoCorpLD40.Spawners
             if(nbSpawn > 0)
             {
                 nbSpawn--;
-                Debug.Log("Spawn remaining:"+nbSpawn);
+                Debug.Log("Spawn remaining:" + nbSpawn);
+                if (nbSpawn == 0) {
+                    GameManager.instance.levelManager.scraps++;
+                }
                 GameObject toInstantiate = (nbSpawn > 0) ? RandomEnemy() : RandomBoss();
                 GameObject instance = Instantiate(toInstantiate, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity) as GameObject;
 
                 mobs.Add(instance);
 
                 instance.transform.SetParent(GameManager.instance.levelManager.boardHolder);
-                animator.SetTrigger("Pop");
+                // animator.SetTrigger("Pop");
                 InvokeNextSpawn();
             }
         }
@@ -86,10 +89,11 @@ namespace EdkoCorpLD40.Spawners
             Debug.Log("RandomBoss");
             GameObject boss;
 
-            if (bosses != null && bosses.Length != 0)
+            if (bosses != null && bosses.Length != 0) {
                 boss = bosses[Random.Range(0, bosses.Length)];
-            else
+            } else {
                 boss = RandomEnemy();
+            }
 
             return boss;
         }
