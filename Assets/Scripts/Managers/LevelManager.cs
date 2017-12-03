@@ -4,10 +4,11 @@ namespace EdkoCorpLD40.Managers
 {
     public class LevelManager : MonoBehaviour 
     {
-        public float trainSpeed = 120f;
-        public int trainHp = 1000;
+        public float trainSpeed = 0f;
+        public int trainCoreMaxHp = 1000;
         public int score = 0;
 
+        private int trainCoreCurrentHp;
         private int currentLvl = 1;
         private int nbSpawners;
 
@@ -22,6 +23,8 @@ namespace EdkoCorpLD40.Managers
             player = GameObject.FindGameObjectWithTag("Player");
             boardHolder = player.transform.parent;
             CameraManager.instance.Follow(player);
+
+            trainCoreCurrentHp = trainCoreMaxHp;
         }
 
         public void OnSpawnerDestroyed()

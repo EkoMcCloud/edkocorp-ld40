@@ -1,4 +1,5 @@
 using UnityEngine;
+using EdkoCorpLD40.Weaponry;
 
 namespace EdkoCorpLD40.Characters
 {
@@ -13,6 +14,10 @@ namespace EdkoCorpLD40.Characters
         public float damageCooldown = 0f; 
         public int maxFuel = 0;
         public bool regenFuel = false;
+
+        public GameObject weapon;
+
+        protected GameObject currentWeapon;
 
         protected Vector2 lastPos;
         protected bool grounded = true;
@@ -58,6 +63,20 @@ namespace EdkoCorpLD40.Characters
             return healed;
         }
 
+        protected virtual void Equip(GameObject weapon)
+        {
+            if (currentWeapon != null) {
+                currentWeapon.SetActive(false);
+                Destroy(currentWeapon);
+                currentWeapon = null;
+            }
+
+            currentWeapon = Instantiate(weapon, new Vector3(0, 0, 0), Quaternion.identity);
+            WeaponEngine weaponEngine = currentWeapon.GetComponent<WeaponEngine>();
+            weaponEngine.RegisterOwner(this.gameObject);
+            currentWeapon.transform.SetParent(this.gameObject.transform.parent);
+        }
+
         protected virtual void Start()
         {
             boxCollider = GetComponent<BoxCollider2D>();
@@ -95,6 +114,10 @@ namespace EdkoCorpLD40.Characters
             if (grounded && regenFuel && currentFuel < maxFuel) {
                 currentFuel++;
             }
+
+            if (currentWeapon == null && weapon != null) {
+                Equip(weapon);
+            }
             // Debug.Log("Velocity " + this.rb2D.velocity);
             // Debug.Log("Grounded " + grounded);
         }
@@ -108,6 +131,10 @@ namespace EdkoCorpLD40.Characters
 
         protected virtual void OnDie()
         {
+            if (currentWeapon != null) {
+                currentWeapon.SetActive(false);
+                Destroy(currentWeapon.gameObject);
+            }
             gameObject.SetActive(false);
             Destroy(this.gameObject);
         }

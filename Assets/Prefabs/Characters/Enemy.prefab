@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1890477935078508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.288048, y: 5.9636, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,7 +108,10 @@ MonoBehaviour:
   damageCooldown: 0
   maxFuel: 0
   regenFuel: 0
+  weapon: {fileID: 1653673218866810, guid: a5d120c460312fc4d981a6d910b4b466, type: 2}
   damage: 1
+  shootCooldown: 2
+  shootCooldownVariation: 0.2
 --- !u!212 &212856545411753804
 SpriteRenderer:
   m_ObjectHideFlags: 1

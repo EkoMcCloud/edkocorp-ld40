@@ -4,6 +4,11 @@ namespace EdkoCorpLD40.Managers
 {
     public class CameraManager : MonoBehaviour 
     {
+        public int xMin = int.MinValue;
+        public int xMax = int.MaxValue;
+        public int yMin = int.MinValue;
+        public int yMax = int.MaxValue;
+
         private GameObject target;
         private bool followTarget = true;
 
@@ -36,6 +41,18 @@ namespace EdkoCorpLD40.Managers
                 Vector3 point  = Camera.main.WorldToViewportPoint(target.transform.position);
                 Vector3 delta  = target.transform.position - Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z));
                 Vector3 destination  = transform.position + delta;
+                if(destination.x < xMin) {
+                    destination.x = xMin;
+                }
+                if(destination.x > xMax) {
+                    destination.x = xMax;
+                }
+                if(destination.y < yMin) {
+                    destination.y = yMin;
+                }
+                if(destination.y > yMax) {
+                    destination.y = yMax;
+                }
                 transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
             }
         }

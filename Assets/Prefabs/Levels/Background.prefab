@@ -52,9 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layersTiles:
-  - {fileID: 1824643488960026, guid: 7caf5dd2bbcb9bd47b94f7d7508dfd84, type: 2}
-  - {fileID: 1989134643693222, guid: e41ca2f91f90b6f42ac4efd92fb4b1a1, type: 2}
-  - {fileID: 1065035381483324, guid: 5e23a2db31a397e4781deb8be0345a17, type: 2}
-  - {fileID: 1314565270218666, guid: e181c652e7bf8e746af0dca38aef3d5d, type: 2}
+  - {fileID: 1920452798189650, guid: 02a3f37bad9a3964e80af847d5bc03b9, type: 2}
+  - {fileID: 1362064622591574, guid: 7caf5dd2bbcb9bd47b94f7d7508dfd84, type: 2}
+  - {fileID: 1296282007020382, guid: e41ca2f91f90b6f42ac4efd92fb4b1a1, type: 2}
+  - {fileID: 1380080931280500, guid: 5e23a2db31a397e4781deb8be0345a17, type: 2}
+  - {fileID: 1393659126268560, guid: e181c652e7bf8e746af0dca38aef3d5d, type: 2}
   - {fileID: 1232447998500060, guid: 1a94c6775bd1dc94783205df1903af13, type: 2}
+  followCamera: 0
   repeat: 3

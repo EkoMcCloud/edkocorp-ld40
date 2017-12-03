@@ -5,27 +5,11 @@ namespace EdkoCorpLD40.Characters
 {
     public class PlayerEngine : CharacterEngine
     {
-        public GameObject weapon;
-
-        private GameObject currentWeapon;
+        
 
         protected override void Start()
         {
             base.Start();
-        }
-
-        protected void Equip(GameObject weapon)
-        {
-            if (currentWeapon != null) {
-                currentWeapon.SetActive(false);
-                Destroy(currentWeapon);
-                currentWeapon = null;
-            }
-
-            currentWeapon = Instantiate(weapon, new Vector3(0, 0, 0), Quaternion.identity);
-            WeaponEngine weaponEngine = currentWeapon.GetComponent<WeaponEngine>();
-            weaponEngine.RegisterOwner(this.gameObject);
-            currentWeapon.transform.SetParent(this.gameObject.transform.parent);
         }
 
         protected override void FixedUpdate() 
@@ -40,10 +24,6 @@ namespace EdkoCorpLD40.Characters
 
                 Move(horizontal, vertical);
                 LookAt(mousePos.x, mousePos.y);
-
-                if (currentWeapon == null && weapon != null) {
-                    Equip(weapon);
-                }
 
                 if (currentWeapon != null) {
                     // TODO : handle joypad button

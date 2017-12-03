@@ -52,6 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaab0995c5fcafe4bbc7523e8a5d3c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainSpeed: 88
+  trainCoreMaxHp: 1000
+  score: 0
 --- !u!114 &114262303909005634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,3 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332eb4502c824e04d9be0e4e6b33c898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}

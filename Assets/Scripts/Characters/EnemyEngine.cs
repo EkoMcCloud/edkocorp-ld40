@@ -1,16 +1,35 @@
 using UnityEngine;
+using EdkoCorpLD40.Weaponry;
 
 namespace EdkoCorpLD40.Characters
 {
     public class EnemyEngine : CharacterEngine 
     {
         public int damage = 1;
+        public float shootCooldown = 2f;
+        public float shootCooldownVariation = 0.2f; // max 1
+
+        private bool shotEnabled = false;
+
+        private float getShotCooldown() {
+            float range = shootCooldown * shootCooldown;
+            return Random.Range(shootCooldown - range, shootCooldown + range);
+        }
+
+        protected void PeriodicEnableShoot() {
+            shotEnabled = true;
+
+            Invoke("PeriodicEnableShoot", getShotCooldown());
+        }
+
 
         // Use this for initialization
         protected override void Start ()
         {
             // bloodColor = new Color(0.0f, 0.0f, 0.0f, 0.3f);
             base.Start();
+
+            Invoke("PeriodicEnableShoot", getShotCooldown());
         }
         
         // Update is called once per frame
@@ -27,10 +46,19 @@ namespace EdkoCorpLD40.Characters
                 if (player != null) {
                     move = player.transform.position - transform.position;
                     LookAt(player.transform.position.x, player.transform.position.y);
+                    if (currentWeapon != null) {
+                        WeaponEngine weaponEngine = currentWeapon.GetComponent<WeaponEngine>();
+                        weaponEngine.Aim(player.gameObject.transform.position);
+
+                        if (shotEnabled) {
+                            shotEnabled = false;
+                            weaponEngine.Fire(this.gameObject, player.transform.position - this.transform.position);
+                        }
+                    }
                 }
 
                 if (core != null) {
-                    move = player.transform.position - transform.position;
+                    move = core.transform.position - transform.position;
                 }
                 Move(move.x, move.y);
             } else {
@@ -74,7 +102,7 @@ namespace EdkoCorpLD40.Characters
 
         protected void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("COLISION");
+            // Debug.Log("COLISION : " + collision.tag);
             if (collision.tag == "Player") { // TODO ADD DAMAGE ON TRIGGER STAY sinon immune
                 PlayerEngine player = collision.gameObject.GetComponent<PlayerEngine>();
                 // hpLoss
