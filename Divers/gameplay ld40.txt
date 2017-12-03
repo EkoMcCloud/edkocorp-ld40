@@ -30,3 +30,7 @@ pv
 bismuth
 metal (pour les upgrades)
 thune (pour les recruits)
+
+grande sprite par background (avec numero)
+sprite de cadavre
+possibilité de boter le cul des cadavres hors du train
