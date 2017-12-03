@@ -42,7 +42,8 @@ namespace EdkoCorpLD40.Level
             for (int i = 0; i < tiles.Count; i++) {
                 int ratio = i + 1;
                 // float moveX = 60 * Time.deltaTime * - GameManager.instance.levelManager.trainSpeed * ratio;
-                float moveX = 60 * Time.deltaTime * - (GameManager.instance.levelManager.trainSpeed / 100) / ratio;
+                float trainSpeed = GameManager.instance != null && GameManager.instance.levelManager != null ? GameManager.instance.levelManager.trainSpeed : 88f;
+                float moveX = 60 * Time.deltaTime * - (trainSpeed / 100) / ratio;
                 // Debug.Log("Move x : " + moveX);
                 float yPosition = followCamera ? Camera.main.transform.position.y : 0;
                 // Debug.Log(moveX);
