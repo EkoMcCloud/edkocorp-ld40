@@ -1,0 +1,36 @@
+le train démarre (juste le background qui défile plus ou moins vite)
+[phase 1 période random tranquille]
+(on commence avec une tour)
+possibilité d'envoyer un péon construire/reparer
+[phase 2 vague d'ennemis]
+des bandits tombent du ciel
+ils marchent jusqu'à l'avant du train pour casser la chaudière
+la tour les attaque
+possibilité d'utiliser son perso pour leur mettre des coups de shotgun
+repeat en random cette phase
+[phase 3]
+possibilité de s'arrêter dans une mine ou de tracer jusqu'à la station la plus proche
+[phase 3.5 optionnelle du coup]
+le train s'arrête
+l'équipage sort recolter du minerai
+plus on en choppe plus y'a d'ennemi et plus le compteur de danger monte
+on peut appuyer sur la sonnette pour faire un TCHOU TCHOU MOTHERFUCKER 
+ça rappel l'équipage dans le train
+et peut appuyer pour faire démarrer le train quand on veut
+et on se barre
+faut finir les ennemis déjà sur le train avant de pouvoir arriver à la station
+[phase 4]
+posay à la station, on peut réparer tranquille, engager de l'équipage, et repartir
+[retour phase 1]
+
+
+appeler le train Jess
+ajouter le hud avec ressources
+pv
+bismuth
+metal (pour les upgrades)
+thune (pour les recruits)
+
+grande sprite par background (avec numero)
+sprite de cadavre
+possibilité de boter le cul des cadavres hors du train
